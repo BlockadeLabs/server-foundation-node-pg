@@ -1,0 +1,8 @@
+FROM postgres:12.2
+
+ENV POSTGRES_USER postgres
+ENV POSTGRES_PASSWORD password
+ENV POSTGRES_DB postgres
+
+# Copy all of the SQL schema files over
+COPY ./sql/schema/ /docker-entrypoint-initdb.d/
