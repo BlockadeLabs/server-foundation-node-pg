@@ -6,10 +6,6 @@ Foundation for a backend server, database, session management & API.
 
 For ease of use, Dockerfiles and a Docker Compose file are provided for portability.
 
-### Before you start: Docker Configuration
-
-Make sure that your Docker engine is configured to use at least 2 CPU cores and 4 GB of memory. Running multiple node instances, postgres, and loom uses up a considerable amount of memory.
-
 ### Setup
 
 #### Build the Docker images
