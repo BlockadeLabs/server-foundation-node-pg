@@ -1,2 +1,3 @@
 // The server is our entrypoint
-require('./src/server.js');
+const app = require('./src/server.js');
+app();

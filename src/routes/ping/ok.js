@@ -1,4 +1,4 @@
-const response = require('../util/response.js');
+const response = require('../../util/response.js');
 
 function ping(req,res) {
 	return response.send(
@@ -9,10 +9,12 @@ function ping(req,res) {
 }
 
 // Provide the same method for both GET and POST calls
-const get  = ping;
-const post = ping;
+//const endpoint = 'ping';
+const get      = ping;
+const post     = ping;
 
 module.exports = {
+	//endpoint,
 	get,
 	post
 };

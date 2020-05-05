@@ -10,17 +10,17 @@ const config = require('./config/config.js');
 // Application-specific Code
 const router = require('./router.js');
 
-// Server Settings
-server.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: false }));
-
 // Entry point
-(async function() {
+async function app() {
+
+	// Server Settings
+	server.use(function(req, res, next) {
+		res.header("Access-Control-Allow-Origin", "*");
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		next();
+	});
+	server.use(bodyParser.json());
+	server.use(bodyParser.urlencoded({ extended: false }));
 
 	// Setup Routes
 	router(server);
@@ -30,5 +30,7 @@ server.use(bodyParser.urlencoded({ extended: false }));
 		config.SERVER_PORT,
 		() => log.info(`Server listening on port ${config.SERVER_PORT}`)
 	);
+
 }
-)();
+
+module.exports = app;

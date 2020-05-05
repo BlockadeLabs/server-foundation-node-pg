@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start-dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx mocha --timeout 5000 --exit"
   },
   "author": "Blockade Games",
   "license": "MIT",
@@ -19,6 +19,8 @@
     "pg": "^8.0.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "mocha": "^7.1.2",
+    "nodemon": "^2.0.3",
+    "request": "^2.88.2"
   }
 }
