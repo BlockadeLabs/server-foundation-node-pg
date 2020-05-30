@@ -8,7 +8,7 @@
     "start-dev": "nodemon index.js",
     "test": "npx mocha --timeout 5000 --exit"
   },
-  "author": "Blockade Games",
+  "author": "Blockade Games, Inc",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",

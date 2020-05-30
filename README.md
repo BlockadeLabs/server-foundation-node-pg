@@ -6,7 +6,7 @@ Foundation for a backend server, database, session management & API.
 
 - Dockerfiles & Docker Compose for a consistent development environment
 - Database is PostgreSQL
-- Database pool instantiator, `db/pool.js`
+- Database pool instantiator, `database/Database.js`
 - Router & routes follow a specific design pattern - see below
 - Dotenv is used to pull environment variables from the `.env` file
 	- Use `.env.sample` for all of the default values, which can be copied into `.env`

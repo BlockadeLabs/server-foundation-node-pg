@@ -34,11 +34,11 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=5000
-      - SQL_HOST=database
-      - SQL_USER=postgres
-      - SQL_PASSWD=password
-      - SQL_PORT=5432
-      - SQL_DB=postgres
-      - SQL_LIMIT=400
+      - DB_HOST=database
+      - DB_USER=postgres
+      - DB_PASSWD=password
+      - DB_PORT=5432
+      - DB_DB=postgres
+      - DB_LIMIT=400
     command:
       sh -c 'npm i && npx nodemon index.js'

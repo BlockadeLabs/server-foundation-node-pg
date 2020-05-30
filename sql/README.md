@@ -1,6 +1,8 @@
 # Postgres SQL Files
 
-The Postgres SQL files are stored in the `schema/` sub-folder. They are named in order so that they can be run on a postgres installation in the correct order without maintaining a configuration file.
+The Postgres SQL schema files are stored in the `schema/` sub-folder. They are named in order so that they can be run on a postgres installation in the correct order without maintaining a configuration file.
+
+Views should be kept separate so that they can be rerun as they are updated. They can exist in the `views/` sub-folder.
 
 ## Filename Numbering Convention
 
