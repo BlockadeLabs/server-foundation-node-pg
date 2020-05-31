@@ -5,12 +5,6 @@ const app = require('../src/server.js');
 
 describe('Foundation', function() {
 
-	before(function(done) {
-		app().then(function() {
-			done();
-		});
-	});
-
 	it('Should connect and receive OK ping', function(done) {
 		request('http://localhost:5000/api/ping/ok' , function(error, response, body) {
 			assert(body && typeof body === 'string');
