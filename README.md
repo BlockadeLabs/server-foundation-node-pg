@@ -4,7 +4,6 @@ Foundation for a backend server, database, session management & API.
 
 ## What this Foundation Contains
 
-- Dockerfiles & Docker Compose for a consistent development environment
 - Database is PostgreSQL
 - Database pool instantiator, `database/Database.js`
 - Router & routes follow a specific design pattern - see below
@@ -15,12 +14,16 @@ Foundation for a backend server, database, session management & API.
 - `src/util` includes common utility files
 - Mocha is included for testing, including default tests
 - Nodemon is included for rapid development iteration
+- Dockerfiles & Docker Compose are included for a consistent development environment
+
+### Installation
+
+`npm install` - Installs packages from `package.json` into `node_modules`
 
 ### Ways to start your app
 
 `npm start` - Default, runs normally
 `npm run start-dev` - Run using `nodemon`
-
 
 ### Testing
 
@@ -88,5 +91,5 @@ This server software was designed by our developers at Blockade Games, either di
 - Adrian Seeley
 - Ben Heidorn
 - Chris Chapman
-- Rob Myers
+- Rhea Myers
 - Troy Salem

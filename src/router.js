@@ -23,18 +23,30 @@ function router(server, _path = "") {
 		// Request the file
 		const methods = require(link);
 
-		// If the `endpoint` value is passed, use it
-		// Otherwise, use the filename
-		const endpoint = (methods.hasOwnProperty('endpoint')) ?
-			methods.endpoint : _path + route.replace('.js', '');
-
-		if (methods.hasOwnProperty('get')) {
-			server.get('/api/' + endpoint, methods.get);
+		// Allow for multiple routes
+		if (methods.hasOwnProperty('routes')) {
+			for (let method of methods.routes) {
+				getEndpoint(server, _path, route, method);
+			}
 		}
 
-		if (methods.hasOwnProperty('post')) {
-			server.post('/api/' + endpoint, methods.post);
-		}
+		// Pull from the root object
+		getEndpoint(server, _path, route, methods);
+	}
+}
+
+function getEndpoint(server, _path, route, methods) {
+	// If the `endpoint` value is passed, use it
+	// Otherwise, use the filename
+	const endpoint = (methods.hasOwnProperty('endpoint')) ?
+		methods.endpoint : _path + route.replace('.js', '');
+
+	if (methods.hasOwnProperty('get')) {
+		server.get('/api/' + endpoint, methods.get);
+	}
+
+	if (methods.hasOwnProperty('post')) {
+		server.post('/api/' + endpoint, methods.post);
 	}
 }
 

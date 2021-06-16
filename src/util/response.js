@@ -8,9 +8,15 @@ function send(res, code, data) {
 	return res.end();
 }
 
+function sendDirect(res, data) {
+	res.send(data);
+	return res.end();
+}
+
 module.exports = {
 	// Functions
 	send,
+	sendDirect,
 
 	// Codes
 	OK              : 200,

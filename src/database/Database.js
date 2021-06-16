@@ -8,6 +8,9 @@ const config = require('../config/config.js');
 // Custom Client handler
 const Client = require('./Client.js');
 
+// Local Debug Switch
+const debugClientReleases = false;
+
 class Database {
 	constructor() {
 		this.pool = new pg.Pool({
@@ -35,6 +38,22 @@ class Database {
 	}
 
 	async connect(callback) {
+		let creator = false; // Pass as false to avoid debug logging for unreleased clients.
+		if (debugClientReleases) {
+			// Note the creator stack
+			let e = new Error();
+			if (e && e.stack) {
+				let frames = e.stack.split("\n");
+				try {
+					let possibleCreator = frames[frames.length-2].split(" ")
+					creator = possibleCreator[possibleCreator.length-1];
+				} catch (ex) {
+					log.warn("Unable to set creator, database client creator is unknown");
+					creator = "Unknown";
+				}
+			}
+		}
+
 		let connectCallback = null;
 		if (callback && typeof callback === 'function') {
 			connectCallback = (err, client, release) => {
@@ -43,7 +62,7 @@ class Database {
 					process.exit(1);
 				}
 
-				callback(new Client(client, release), release);
+				callback(new Client(client, release, creator), release);
 			};
 
 			return this.getPool().connect(connectCallback)
@@ -55,7 +74,7 @@ class Database {
 				process.exit(1);
 			}
 
-			return new Client(client, client.release);
+			return new Client(client, client.release, creator);
 		}
 	}
 }
